@@ -1,0 +1,6 @@
+[book]
+authors = ["The Maintainers of community-docs"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Unofficial Discord API Documentation"
