@@ -1,9 +1,11 @@
 # Community-Maintained Documentation for the Discord API
 
+[![](https://github.com/apacheli/community-docs/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/apacheli/community-docs/actions/workflows/ci.yaml)
+[![](https://discord.com/api/guilds/81384788765712384/widget.png)](https://discord.gg/discord-api)
+
 ### About
 
-Welcome to the unofficial Discord API documentation. The aim of this project is
-to explain the concepts of the Discord API in more detail.
+The source for the _unofficial_ Discord API documentation.
 
 [You can read the compiled documentation here.](https://apacheli.github.io/community-docs/)
 
@@ -17,7 +19,7 @@ to explain the concepts of the Discord API in more detail.
 - Run the documentation locally: `$ mdbook serve`
 - Create a pull request
 
-By contributing, you agree to the terms of
+By contributing to this repository, you agree to the terms of
 [the community-docs license](./LICENSE).
 
 ### Useful Links
