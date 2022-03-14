@@ -14,13 +14,22 @@ The source for the _unofficial_ Discord API documentation.
 - Clone the repository: `$ git clone https://github.com/apacheli/community-docs`
 - [Install mdBook](https://rust-lang.github.io/mdBook/guide/installation.html)
 - [Install dprint](https://dprint.dev/install/)
-- Run the formatter from the root of the directory: `$ dprint fmt`
-- Run the checker to make sure everything is formatted: `$ dprint check`
 - Run the documentation locally: `$ mdbook serve`
-- Create a pull request
+- Make the necessary changes. See [the style guide](#style-guide) for more
+  information.
+- Run the formatter from the root of the directory: `$ dprint fmt`
+- Run the checker to make sure that everything is formatted: `$ dprint check`
+- Create a pull request.
 
 By contributing to this repository, you agree to the terms of
 [the community-docs license](./LICENSE).
+
+### Style Guide
+
+- The documentation should compliment the already existing
+  [Discord Developer Documentation](https://discord.com/developers/docs/intro).
+- Each page should flow smoothly from top to bottom.
+- Do not use contractions (e.g. prefer _do not_ over _don't_).
 
 ### Useful Links
 
