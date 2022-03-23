@@ -19,16 +19,17 @@ has two ways of receiving them:
 - Outgoing webhook
 - Gateway event `INTERACTION_CREATE`
 
-It is important to note that **these methods are mutually exclusive**&mdash;your
+It is important to note that these methods are mutually exclusive&mdash;your
 application will not receive the interaction payload via gateway event if an
 outgoing webhook is present.
 
 Knowing the context of the interaction, your application can _and must_ properly
-respond to it.
+respond to it. The end result will always result in your application sending a
+message.
 
 ## Disruptive Interaction Flows
 
 A typical interaction flow can be disrupted when:
 
-- The user asks for autocomplete results for an application command option.
+- The client asks for autocomplete results for an application command option.
 - Your application sends a modal to the user.
