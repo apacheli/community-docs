@@ -29,7 +29,7 @@ By contributing to this repository, you agree to the terms of
 - The documentation should compliment the already existing
   [Discord Developer Documentation](https://discord.com/developers/docs/intro).
 - Each page should flow smoothly from top to bottom.
-- Do not use contractions (e.g. prefer _do not_ over _don't_).
+- Do not use contractions (e.g. prefer "do not" over "don't").
 
 ### Useful Links
 
