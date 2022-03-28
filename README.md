@@ -26,10 +26,9 @@ By contributing to this repository, you agree to the terms of
 
 ### Style Guide
 
-- The documentation should compliment the already existing
-  [Discord Developer Documentation](https://discord.com/developers/docs/intro).
 - Each page should flow smoothly from top to bottom.
-- Do not use contractions (e.g. prefer "do not" over "don't").
+- Keep the wording simple and consise.
+- Do not use contractions (e.g. use "do not" over "don't").
 
 ### Useful Links
 
