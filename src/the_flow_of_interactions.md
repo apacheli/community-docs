@@ -7,7 +7,8 @@
 Let us take a look at how interactions work.
 
 First, A user creates an interaction by triggering one of your application's
-entry points. For example, the following are entry points:
+[entry points](./glossary.md#entry-point). For example, the following are entry
+points:
 
 - A user invoking a slash command
 - A user clicking on a button
@@ -24,8 +25,7 @@ application will not receive the interaction payload via gateway event if an
 outgoing webhook is present.
 
 Knowing the context of the interaction, your application can _and must_ properly
-respond to it. The end result will always result in your application sending a
-message.
+respond to it.
 
 ## Disruptive Interaction Flows
 

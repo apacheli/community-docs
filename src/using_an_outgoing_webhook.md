@@ -1,5 +1,13 @@
 # Using an Outgoing Webhook
 
+- [Configuring an Outgoing Webhook](#configuring-an-outgoing-webhook)
+- [Verifying Requests](#verifying-requests)
+  - [Acknowledging the Ping Interaction](#acknowledging-the-ping-interaction)
+
+---
+
+## Configuring an Outgoing Webhook
+
 To configure your application's outgoing webhook:
 
 - Go to your
@@ -11,11 +19,12 @@ Your interactions endpoint URL must use
 [HTTPS](https://en.wikipedia.org/wiki/HTTPS). A verification test begins when
 you submit your URL. Discord will send you two requests&mdash;one with and one
 _without_ a valid signature. You must be ready to verify these requests ahead of
-time before your URL can be saved.
+time before your changes can be saved.
+
+## Verifying Requests
 
 Discord uses [the Ed25519 security signature format](https://ed25519.cr.yp.to/)
-for verification. To prevent unauthorized access to your URL, Discord sends you
-two signature headers:
+for verification. Discord sends you two signature headers:
 
 - `X-Signature-Ed25519`
 - `X-Signature-Timestamp`
@@ -47,7 +56,8 @@ X-Signature-Timestamp: XXXXXXXX
 ```
 
 Next, you will need your application's public key. You can obtain it by going to
-your [application's dashboard](https://discord.com/developers/applications).
+your [application's dashboard](https://discord.com/developers/applications)
+right above the _Interactions Endpoint URL_ field.
 
 Here is an example using [express](https://github.com/expressjs/express) and
 [tweetnacl](https://github.com/dchest/tweetnacl-js) that shows you how to verify
@@ -59,7 +69,7 @@ import nacl from "tweetnacl";
 
 const publicKey = "PUBLIC_KEY";
 
-const body = req.body; // Raw UTF-8 text
+const body = req.body; // UTF-8 text
 const signature = req.header("X-Signature-Ed25519");
 const timestamp = req.header("X-Signature-Timestamp");
 
@@ -72,21 +82,25 @@ const verified = nacl.sign.detached.verify(
 
 If the verification fails, respond with `401 Unauthorized`.
 
-```js
-if (!verified) {
-  res.status(401).send("401 Unauthorized");
-  return;
-}
+```https
+HTTP/1.1 401 Unauthorized
 ```
+
+### Acknowledging the Ping Interaction
 
 The final part of the test is acknowledged the ping interaction. You will only
 receive this type of interaction when you submit a new interactions endpoint
-URL. You must respond with status `200 OK` and a `Content-Type` of
-`application/json`.
+URL. You can determine the type of the interaction by viewing the `type` field.
+If the type matches `1`, you will know that it is the ping interaction. You must
+respond with status `200 OK` and a `Content-Type` of `application/json`.
 
-```js
-if (interaction.type === 1) {
-  res.status(200).send({ type: 1 });
-  return;
+```https
+HTTP/1.1 200 OK
+Content-Type: application/json
+```
+
+```json
+{
+  "type": 1
 }
 ```
