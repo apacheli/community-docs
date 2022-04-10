@@ -79,11 +79,15 @@ Depending on the type of interaction you receive, you may also have to respond
 with the `body` parameter. Providing incorrect values in the response will also
 result in an error message that the client will see.
 
+If you have successfully responded to the interaction, you will gain a `token`
+from the interaction. You are allowed to modify the response message for **15
+minutes** before the token expires.
+
 ## Ephemeral Messages
 
 If you only want the user that triggered the interaction to see the message, you
-can send an ephemeral message. You can _bitwise OR_ the `EPHEMERAL` flag to
-`flags` as defined by the
+can send an ephemeral message. You can use the `EPHEMERAL` flag field as defined
+by the
 [Interaction Response Data Message Flags](#interaction-response-data-message-flags)
 table.
 
@@ -97,12 +101,16 @@ table.
 }
 ```
 
+While you are allowed the message even if it is ephemeral, you may not delete
+the message unlike a regular message.
+
 ## Deferring Your Response Message
 
-You only have a 3 second window to respond to an interaction. If you need more
-time to process a request, you can defer your message. To defer your message,
-You can use type `DEFERRED_MESSAGE` as defined by the
-[Interaction Response Types](#interaction-response-types) table.
+You only have a 3 second window to respond to an interaction. If you have not
+responded within those 3 seconds, your interaction will automatically be
+invalidated. If you need more time to process the interaction, you can defer
+your message. To defer your message, You can use type `DEFERRED_MESSAGE` as
+defined by the [Interaction Response Types](#interaction-response-types) table.
 
 ```json
 {
@@ -111,7 +119,13 @@ You can use type `DEFERRED_MESSAGE` as defined by the
 ```
 
 Once deferred, the client will see a loading state. This helps the user know
-that the bot is taking time to process the request.
+that the bot is taking time to process the request. You are expected to follow
+up with a message later.
+
+If you have successfully deferred your message, your time will be increased to
+15 minutes. It is important to know that this time increase is not limited to
+message deferring&mdash;you are allowed to use interaction HTTP endpoints during
+this time.
 
 ---
 
