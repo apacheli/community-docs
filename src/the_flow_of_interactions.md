@@ -1,8 +1,11 @@
 # The Flow of Interactions
 
-- [Disruptive Interaction Flows](#disruptive-interaction-flows)
+- [Overview](#overview)
+- [Interruptions in Interaction Flows](#interruptions-in-interaction-flows)
 
 ---
+
+## Overview
 
 Let us take a look at how interactions work.
 
@@ -27,9 +30,13 @@ outgoing webhook is present.
 Knowing the context of the interaction, your application can _and must_ properly
 respond to it.
 
-## Disruptive Interaction Flows
+## Interruptions in Interaction Flows
 
-A typical interaction flow can be disrupted when:
+A typical interaction flow can be interrupted when:
 
 - The client asks for autocomplete results for an application command option.
 - Your application sends a modal to the user.
+
+These interaction types must be resolved differently than a typical interaction
+flow. While most interactions must conclude with a message, there are
+interaction types that may find their way in the middle of the flow.

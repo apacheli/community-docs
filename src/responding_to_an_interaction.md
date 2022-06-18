@@ -31,18 +31,12 @@ These are the types of interactions that can you expect to receive.
 
 ### Interaction Response
 
-| Name   | Type                                                      | Description |
-| ------ | --------------------------------------------------------- | ----------- |
-| `data` | [Interaction Response Data](#interaction-response-data)   |             |
-| `type` | [Interaction Response Types](#interaction-response-types) |             |
+| Name    | Type                                                      | Description                                                                                                                                     |
+| ------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`? | [Interaction Response Data](#interaction-response-data)   | Additional data used in conjunction with `type`.                                                                                                |
+| `type`  | [Interaction Response Types](#interaction-response-types) | The type of response to respond with to the interaction. Depending on the type of interaction, you may only respond certain types of responses. |
 
 ### Interaction Response Data
-
-#### Autocomplete
-
-#### Message
-
-#### Modal
 
 ### Interaction Response Types
 
@@ -101,8 +95,9 @@ table.
 }
 ```
 
-While you are allowed the message even if it is ephemeral, you may not delete
-the message unlike a regular message.
+While you _are_ allowed to modify the message even if it is ephemeral, you may
+not delete the message unlike a traditional message. Instead, the end user can
+delete the message. The interaction token will also expire.
 
 ## Deferring Your Response Message
 

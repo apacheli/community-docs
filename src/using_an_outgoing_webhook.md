@@ -6,6 +6,10 @@
 
 ---
 
+> As previously mentioned, you can use either an outgoing webhook or establish a
+> connection to the gateway. If you are choosing the latter option, then this
+> section will not be relevant to you.
+
 ## Configuring an Outgoing Webhook
 
 To configure your application's outgoing webhook:
@@ -92,8 +96,8 @@ HTTP/1.1 401 Unauthorized
 The final part of the test is acknowledging the ping interaction. You will only
 receive this type of interaction when you submit a new interactions endpoint
 URL. You can determine the type of the interaction by inspecting the `type`
-field. If the type matches `1`, you will know that it is the ping interaction.
-You must respond with status `200 OK` and a `Content-Type` of
+field. If the type matches `1`, then you will know that it is the ping
+interaction. You must respond with status `200 OK` and a `Content-Type` of
 `application/json`.
 
 ```https
