@@ -2,7 +2,7 @@
 
 - [Configuring an Outgoing Webhook](#configuring-an-outgoing-webhook)
 - [Verifying Requests](#verifying-requests)
-  - [Acknowledging the Ping Interaction](#acknowledging-the-ping-interaction)
+- [Acknowledging the Ping Interaction](#acknowledging-the-ping-interaction)
 
 ---
 
@@ -60,10 +60,9 @@ X-Signature-Timestamp: XXXXXXXX
 ```
 
 Next, you will need your application's public key. You can obtain it by going to
-your [application's dashboard](https://discord.com/developers/applications)
-right above the _Interactions Endpoint URL_ field.
+your [application's dashboard](https://discord.com/developers/applications).
 
-Here is an JavaScript example using
+Here is a JavaScript example using
 [express](https://github.com/expressjs/express) and
 [tweetnacl](https://github.com/dchest/tweetnacl-js) that shows you how to verify
 requests:
@@ -91,13 +90,20 @@ If the verification fails, respond with `401 Unauthorized`.
 HTTP/1.1 401 Unauthorized
 ```
 
-### Acknowledging the Ping Interaction
+```js
+if (!verified) {
+  res.sendStatus(401);
+  return;
+}
+```
+
+## Acknowledging the Ping Interaction
 
 The final part of the test is acknowledging the ping interaction. You will only
 receive this type of interaction when you submit a new interactions endpoint
 URL. You can determine the type of the interaction by inspecting the `type`
 field. If the type matches `1`, then you will know that it is the ping
-interaction. You must respond with status `200 OK` and a `Content-Type` of
+interaction[^1]. You must respond with status `200 OK` and a `Content-Type` of
 `application/json`.
 
 ```https
@@ -121,3 +127,7 @@ if interaction.type == 1:
     }
     return web.json_response(data)
 ```
+
+---
+
+[^1]: [Interaction Type `PING`](./responding_to_an_interaction.md#interaction-types)
