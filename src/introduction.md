@@ -8,8 +8,8 @@ We want to make the documentation as clear and as concise as possible.
 
 ## Contributing
 
-Found a grammatical error or a misspelling? Please help us by
-[creating a pull request](https://github.com/apacheli/community-docs/pulls) with
-the necessary changes. We love contributions! See
+Find a grammatical error or a misspelling? Please help us by
+[creating a pull request](https://github.com/apacheli/community-docs/pulls) at
+our GitHub with the necessary changes. We love contributions! See
 [our contributing guidelines](https://github.com/apacheli/community-docs#contributing)
 for more information.
